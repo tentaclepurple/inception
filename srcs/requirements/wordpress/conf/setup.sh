@@ -2,7 +2,7 @@
 
 # wordpress configuration
 
-#create wp instalation directory
+# create wp instalation directory
 mkdir -p /var/www/html
 
 # waits until the conection with mariadb through port 3306 is stablished (nc = netcat). Waits 1 sec between tries
