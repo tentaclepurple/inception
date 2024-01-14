@@ -4,21 +4,26 @@ Contenedorización:
 
 Docker utiliza contenedorización para empaquetar aplicaciones y sus dependencias en unidades llamadas contenedores.
 Los contenedores ofrecen un entorno consistente y aislado, asegurando que una aplicación se ejecute de la misma manera en diferentes entornos.
+
 Imágenes:
 
 Las imágenes de Docker son los bloques de construcción de los contenedores. Una imagen es un paquete ejecutable que incluye todo lo necesario para ejecutar un software.
+
 Dockerfile:
 
 Las imágenes de Docker se crean a partir de un conjunto de instrucciones definidas en un archivo llamado Dockerfile. Este archivo especifica la imagen base, el código de la aplicación, las dependencias y otras configuraciones.
+
 Motor de Docker:
 
 El Motor de Docker es el componente principal de Docker. Incluye el daemon de Docker (un proceso en segundo plano que gestiona contenedores) y una interfaz de línea de comandos (CLI) para interactuar con Docker.
 Registro:
 
 Las imágenes de Docker pueden almacenarse en un registro, que es un repositorio centralizado para compartir y distribuir imágenes. Docker Hub es un registro público popular, y las organizaciones a menudo utilizan registros privados.
+
 Comandos de Docker:
 
 Los desarrolladores utilizan comandos de Docker para construir, empujar, extraer y ejecutar contenedores. Ejemplos de comandos incluyen docker build, docker run, docker push, etc.
+
 Docker Compose:
 
 ## Archivo de Definición (docker-compose.yml):
