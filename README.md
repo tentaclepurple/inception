@@ -125,5 +125,9 @@ Las redes de Docker son persistentes. Los contenedores pueden ser eliminados y r
 
 ## Comandos
 
-  docker volume ls
-  docker volume inspect nombre_del_volumen
+    docker volume ls
+    docker volume inspect nombre_del_volumen
+
+    docker exec -it nombre_del_contenedor_mysql mysql -uroot -p
+    docker exec -it nombre_del_contenedor_mysql mysql -uusuario -pcontraseña
+
