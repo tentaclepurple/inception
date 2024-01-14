@@ -122,3 +122,8 @@ Persistencia:
 
 Las redes de Docker son persistentes. Los contenedores pueden ser eliminados y recreados, pero la red asociada permanece, lo que facilita la gestión a largo plazo.
 
+
+## Comandos
+
+  docker volume ls
+  docker volume inspect nombre_del_volumen
