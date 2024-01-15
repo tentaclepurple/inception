@@ -57,7 +57,7 @@ services:
     env_file:
       - .env
     volumes:
-      - wordpress_data:/var/www/html
+      - WP_Volume:/var/www/html
     networks:
       - DockerNet
 
