@@ -149,11 +149,51 @@ Las redes de Docker son persistentes. Los contenedores pueden ser eliminados y r
 
 ## Comandos
 
+    docker version
+Muestra la versión de Docker que está instalada en tu sistema.
+
+    docker info
+Muestra la versión de Docker que está instalada en tu sistema.
+
+    docker pull nombre-de-la-imagen:etiqueta
+Descarga una imagen de Docker desde un registro de imágenes (por defecto, Docker Hub).
+
+
+    docker images
+Lista las imágenes de Docker que están almacenadas localmente en tu sistema.
+
+    docker ps
+Muestra los contenedores en ejecución.
+
+    docker ps -a
+Muestra todos los contenedores, incluyendo los que están detenidos.
+
+    docker run -it --name mi-contenedor nombre-de-la-imagen:etiqueta
+Crea y ejecuta un contenedor a partir de una imagen.
+    
+    docker exec -it mi-contenedor comando
+Ejecuta un comando dentro de un contenedor en ejecución.
+
+    docker stop mi-contenedor
+    docker start mi-contenedor
+Detiene y reinicia un contenedor.
+
+    docker rm mi-contenedor
+Elimina uno o más contenedores.
+
+    docker rmi nombre-de-la-imagen:etiqueta
+Elimina una o más imágenes de Docker.
+
+    docker logs mi-contenedor
+Muestra los logs de un contenedor.
+    
     docker volume ls
     docker volume inspect nombre_del_volumen
 
+
     docker exec -it nombre_del_contenedor_mysql mysql -uroot -p
     docker exec -it nombre_del_contenedor_mysql mysql -uusuario -pcontraseña
+
 
 ## Comandos Docker compose
 
@@ -177,6 +217,7 @@ Las redes de Docker son persistentes. Los contenedores pueden ser eliminados y r
 
     docker-compose pull
     #Descarga las imágenes actualizadas definidas en el archivo docker-compose.yml
+
 
 ## Comandos para dockerfile
 
