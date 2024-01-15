@@ -59,7 +59,7 @@ services:
     volumes:
       - wordpress_data:/var/www/html
     networks:
-      - network
+      - DockerNet
 
 volumes:
   WP_Volume:
