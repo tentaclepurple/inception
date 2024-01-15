@@ -181,10 +181,44 @@ Las redes de Docker son persistentes. Los contenedores pueden ser eliminados y r
 ## Comandos para dockerfile
 
     docker build -t nombre-de-la-imagen:etiqueta -f ruta/al/Dockerfile .
-    #Este comando asume que estás ubicado en el directorio que contiene tu aplicación y tu Dockerfile.
-    #Docker utiliza ese contexto (el directorio actual y sus subdirectorios) para construir la imagen.
+Este comando asume que estás ubicado en el directorio que contiene tu aplicación y tu Dockerfile.
+Docker utiliza ese contexto (el directorio actual y sus subdirectorios) para construir la imagen.
     
     docker run -p 8080:80 --name mi-contenedor mi-aplicacion:1.0
-    #crear un contenedor basado en esa imagen y ejecutarlo
+crear un contenedor basado en esa imagen y ejecutarlo
+
+## Commandos para construir un Dockerfile
+
+    FROM debian:bullseye
+define imagen base que se va a usar para construir la nueva imagen
+
+    COPY ./conf/setup.sh /tmp
+Copia archivos desde la máquina host al sistema de archivos del contenedor.
+
+    RUN apt-get update && apt-get install -y curl wget netcat tar
+Ejecuta comandos durante la construcción de la imagen. En este caso, actualiza los paquetes y luego instala algunas herramientas
+
+    CMD [ "sh", "-c", "./tmp/setup.sh && /usr/sbin/php-fpm7.4 -F" ]
+Especifica el comando predeterminado que se ejecutará cuando se inicie un contenedor basado en la imagen.
+
+    EXPOSE 9000
+nforma a Docker que el contenedor escuchará en el puerto especificado durante la ejecución.
+
+    WORKDIR /var/www/html
+Establece el directorio de trabajo para los comandos RUN, CMD y ENTRYPOINT que siguen en el Dockerfile.
+
+    ENV
+        MYSQL_DATABASE=mydb \
+        MYSQL_USER=myuser \
+        MYSQL_PASSWORD=mypassword
+Establece variables de entorno que estarán disponibles para el contenedor durante la construcción y ejecución.
+
+    VOLUME /var/lib/mysql
+Crea un punto de montaje para un volumen.
+
+    LABEL version="1.0" \
+      description="Mi aplicación Docker"
+Agrega metadatos a la imagen, como la versión y la descripción.
+
 
     
