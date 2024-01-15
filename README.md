@@ -155,3 +155,36 @@ Las redes de Docker son persistentes. Los contenedores pueden ser eliminados y r
     docker exec -it nombre_del_contenedor_mysql mysql -uroot -p
     docker exec -it nombre_del_contenedor_mysql mysql -uusuario -pcontraseña
 
+## Comandos Docker compose
+
+    docker-compose up 
+    #  inicia los contenedores definidos en el archivo docker-compose.yml
+
+    docker-compose up -d
+
+    docker-compose down
+
+    docker-compose ps
+
+    docker-compose exec webserver ls -l
+    #ejecuta comando ls dentro de servicio webserver
+
+    docker-compose build
+    #construye o reconstruye los servicios 
+
+    docker-compose restart
+    #reiniciar servicios
+
+    docker-compose pull
+    #Descarga las imágenes actualizadas definidas en el archivo docker-compose.yml
+
+## Comandos para dockerfile
+
+    docker build -t nombre-de-la-imagen:etiqueta -f ruta/al/Dockerfile .
+    #Este comando asume que estás ubicado en el directorio que contiene tu aplicación y tu Dockerfile.
+    #Docker utiliza ese contexto (el directorio actual y sus subdirectorios) para construir la imagen.
+    
+    docker run -p 8080:80 --name mi-contenedor mi-aplicacion:1.0
+    #crear un contenedor basado en esa imagen y ejecutarlo
+
+    
