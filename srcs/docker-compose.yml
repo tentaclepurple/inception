@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+
   mariadb:
     container_name: mariadb
     build: ./requirements/mariadb/.
@@ -14,6 +15,7 @@ services:
       - DockerNet
     env_file:
       - .env
+
   wordpress:
     container_name: wordpress
     depends_on:
@@ -29,6 +31,7 @@ services:
       - DockerNet
     env_file:
       - .env
+
   nginx:
     container_name: nginx
     depends_on:
@@ -42,6 +45,22 @@ services:
       - WP_Volume:/var/www/html
     networks:
       - DockerNet
+
+  redis:
+    container_name: redis
+    build: ./requirements/bonus/redis
+    depends_on:
+      - wordpress
+    ports:
+     - '6379:6379'
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - wordpress_data:/var/www/html
+    networks:
+      - network
+
 volumes:
   WP_Volume:
     driver: local
@@ -55,6 +74,7 @@ volumes:
       type: volume
       device: /home/imontero/data/mariadb
       o: bind
+
 networks:
   DockerNet:
     driver: bridge
