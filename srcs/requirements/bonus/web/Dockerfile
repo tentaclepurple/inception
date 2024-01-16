@@ -6,4 +6,4 @@ RUN apt update && apt upgrade -y && apt install -y \
 
 COPY ./conf /var/www/localhost/htdocs
 
-ENTRYPOINT ["apache2ctl", "-DFOREGROUND"]
+ENTRYPOINT ["web", "-DFOREGROUND"]
