@@ -1,9 +1,9 @@
 FROM debian:bullseye
 
-RUN apt update && apt upgrade && apt add --no-cache  \
+RUN apt update && apt upgrade -y && apt install -y \
     apache2 \
-    && rm -f /var/cache/apk/*
+    && rm -rf /var/lib/apt/lists/*
 
 COPY ./conf /var/www/localhost/htdocs
 
-ENTRYPOINT ["httpd", "-DFOREGROUND"]
+ENTRYPOINT ["apache2ctl", "-DFOREGROUND"]
