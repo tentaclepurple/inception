@@ -9,6 +9,7 @@ RUN rm -rf /var/lib/apt/lists/*
 RUN chmod +x wp-cli.phar  && mv -f wp-cli.phar /usr/local/bin/wp
 RUN chmod +x /tmp/setup.sh
 RUN chmod +x /var/www/html
+RUN chmod +x /var/lib/redis
 
 COPY ./conf/www.conf  /etc/php/7.4/fpm/pool.d/
 
