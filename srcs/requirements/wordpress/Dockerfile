@@ -3,8 +3,9 @@ FROM debian:bullseye
 COPY ./conf/setup.sh /tmp
 
 RUN apt-get update && apt -y install curl wget netcat tar
-RUN apt install -y php php-fpm php-mysql php-gd php-xml php-curl
+RUN apt install -y php php-fpm php-mysql php-gd php-xml php-curl php-cgi php-pdo php-gd php-cli php-mbstring redis php-redis
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN rm -rf /var/lib/apt/lists/*
 RUN chmod +x wp-cli.phar  && mv -f wp-cli.phar /usr/local/bin/wp
 RUN chmod +x /tmp/setup.sh
 
