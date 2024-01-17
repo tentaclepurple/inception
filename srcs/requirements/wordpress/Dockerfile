@@ -10,8 +10,6 @@ RUN chmod +x wp-cli.phar  && mv -f wp-cli.phar /usr/local/bin/wp
 RUN chmod +x /tmp/setup.sh
 RUN chmod +x /var/lib/redis
 
-
-
 COPY ./conf/www.conf  /etc/php/7.4/fpm/pool.d/
 
 RUN sed -i 's/^pid = \/run\/php\/php7\.4-fpm\.pid$/pid = \/var\/run\/php-fpm7.4.pid/' /etc/php/7.4/fpm/php-fpm.conf

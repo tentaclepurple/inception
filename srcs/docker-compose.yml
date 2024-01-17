@@ -67,11 +67,25 @@ services:
     ports:
       - "8888:80"
     restart: unless-stopped
+    networks:
+      - DockerNet
 
   py:
     container_name: py
     build: ./requirements/bonus/py
     restart: unless-stopped
+
+  adminer:
+    container_name: adminer
+    build: ./requirements/bonus/adminer/.
+    image: adminer:42
+    depends_on:
+      - mariadb
+    ports:
+      - "8080:80"
+    networks:
+      - DockerNet
+    restart: always
 
 volumes:
   WP_Volume:
