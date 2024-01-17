@@ -12,4 +12,6 @@ RUN apt-get install -y python3-pip
 RUN pip3 install virtualenv && \
     virtualenv venv
 
+RUN git clone https://github.com/tentaclepurple/PY_42_AI.git data
+
 CMD ["bash"]
