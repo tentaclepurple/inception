@@ -10,8 +10,8 @@ ARG     USER_ID=${USER_ID}
 ARG     GROUP_ID=${GROUP_ID}
 
 # add redis user and group with current host userid and groupid
-RUN     addgroup -S -g ${GROUP_ID} redis \
- &&     adduser -S -G redis -u ${USER_ID} redis
+RUN addgroup --system --gid ${GROUP_ID} redis && \
+    adduser --system --home /var/lib/redis --shell /sbin/nologin --no-create-home --uid ${USER_ID} --ingroup redis redis
 
 COPY ./tools/redis.sh /tmp/redis.sh
 
