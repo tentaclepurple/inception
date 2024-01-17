@@ -16,4 +16,5 @@ RUN pip3 install virtualenv && \
 
 RUN git clone https://github.com/tentaclepurple/PY_42_AI.git data
 
-CMD ["bash"]
+
+CMD ["/data/modulo00/ex09/python3 guess.py"]
