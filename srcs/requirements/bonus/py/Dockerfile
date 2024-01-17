@@ -18,5 +18,5 @@ RUN git clone https://github.com/tentaclepurple/PY_42_AI.git data
 
 #RUN cd data/modulo00/ex09/
 
-CMD ["python3", "/app/data/modulo00/ex09/guess.py"]
+CMD ["/app/data/modulo00/ex09/python3 guess.py"]
 
