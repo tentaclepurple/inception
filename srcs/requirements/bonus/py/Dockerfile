@@ -19,6 +19,6 @@ WORKDIR /app
 
 #RUN cd data/modulo00/ex09/
 
-CMD ["/data/modulo00/ex09/python3 guess.py"]
+CMD ["bash"]
 
 
