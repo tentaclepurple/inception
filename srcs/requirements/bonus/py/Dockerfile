@@ -12,4 +12,4 @@ RUN apt-get install -y python3-pip
 RUN pip3 install virtualenv && \
     virtualenv venv
 
-CMD ["nvim", "."]
+CMD ["bash"]
