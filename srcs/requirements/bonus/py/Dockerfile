@@ -9,13 +9,13 @@ RUN vim +PlugInstall +qall || true
 RUN pip install tqdm
 RUN pip install requests
 
+WORKDIR /data/modulo00/ex09
 
 #RUN pip3 install virtualenv && \
 #    virtualenv venv
 
 RUN git clone https://github.com/tentaclepurple/PY_42_AI.git data
 
-WORKDIR /data/modulo00/ex09
 
 #RUN cd data/modulo00/ex09/
 
