@@ -15,7 +15,7 @@ RUN pip install requests
 
 RUN git clone https://github.com/tentaclepurple/PY_42_AI.git data
 
-WORKDIR /app
+#WORKDIR /app
 
 #RUN cd data/modulo00/ex09/
 
