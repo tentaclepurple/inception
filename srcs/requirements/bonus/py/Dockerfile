@@ -15,9 +15,10 @@ RUN pip install requests
 
 RUN git clone https://github.com/tentaclepurple/PY_42_AI.git data
 
-WORKDIR /app/data/modulo00/ex09/
+WORKDIR /app
 
 #RUN cd data/modulo00/ex09/
 
-CMD ["bash"]
+CMD ["/data/modulo00/ex09/python3 guess.py"]
+
 
