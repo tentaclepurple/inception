@@ -71,7 +71,7 @@ services:
   py:
     container_name: py
     build: ./requirements/bonus/py
-    restart: unless-stopped
+    #restart: unless-stopped
 
   adminer:
     container_name: adminer
