@@ -7,7 +7,9 @@ WORKDIR /app
 
 RUN vim +PlugInstall +qall || true
 
-RUN apt-get install -y python3-pip
+RUN pip install tqdm
+RUN pip install requests
+
 
 RUN pip3 install virtualenv && \
     virtualenv venv
