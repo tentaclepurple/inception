@@ -67,8 +67,6 @@ services:
     ports:
       - "8888:80"
     restart: unless-stopped
-    networks:
-      - DockerNet
 
   py:
     container_name: py
@@ -83,8 +81,6 @@ services:
       - mariadb
     ports:
       - "8080:80"
-    networks:
-      - DockerNet
     restart: always
 
 volumes:
