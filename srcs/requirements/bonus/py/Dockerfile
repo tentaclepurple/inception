@@ -9,8 +9,6 @@ RUN vim +PlugInstall +qall || true
 RUN pip install tqdm
 RUN pip install requests
 
-WORKDIR /data/modulo00/ex09
-
 #RUN pip3 install virtualenv && \
 #    virtualenv venv
 
