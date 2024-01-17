@@ -12,4 +12,4 @@ RUN apt-get install -y python3-pip
 RUN pip3 install virtualenv && \
     virtualenv venv
 
-CMD ["/bin/bash"]
+CMD ["python3", "daemon off;"]
