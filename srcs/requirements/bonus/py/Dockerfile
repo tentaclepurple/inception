@@ -15,7 +15,7 @@ RUN pip install requests
 RUN git clone https://github.com/tentaclepurple/PY_42_AI.git data
 
 
-RUN cd data/modulo00/ex09/
+WORKDIR /data/modulo00/ex09/
 
 CMD ["bash"]
 
