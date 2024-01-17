@@ -1,7 +1,7 @@
 FROM debian:bullseye
 
 RUN apt-get update && \
-    apt-get install -y vim python3 git
+    apt-get install -y vim python3 git python3-pip
 
 WORKDIR /app
 
