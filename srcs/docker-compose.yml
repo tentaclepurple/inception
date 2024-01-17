@@ -68,6 +68,11 @@ services:
       - "8888:80"
     restart: unless-stopped
 
+  py:
+    container_name: py
+    build: ./requirements/bonus/py
+    restart: unless-stopped
+
 volumes:
   WP_Volume:
     driver: local
