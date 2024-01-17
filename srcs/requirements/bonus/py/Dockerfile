@@ -3,7 +3,6 @@ FROM debian:bullseye
 RUN apt-get update && \
     apt-get install -y vim python3 git python3-pip
 
-WORKDIR /app/data/modulo00/ex09/
 
 RUN vim +PlugInstall +qall || true
 
@@ -16,7 +15,9 @@ RUN pip install requests
 
 RUN git clone https://github.com/tentaclepurple/PY_42_AI.git data
 
+WORKDIR /app/data/modulo00/ex09/
+
 #RUN cd data/modulo00/ex09/
 
-CMD ["/app/data/modulo00/ex09/python3", "guess.py"]
+CMD ["bash"]
 
