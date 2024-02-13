@@ -4,6 +4,8 @@ RUN apt update && apt upgrade -y && apt install -y \
     apache2 \
     && rm -rf /var/lib/apt/lists/*
 
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
 EXPOSE 8888
 
 
