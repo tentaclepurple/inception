@@ -52,7 +52,7 @@ services:
     depends_on:
       - wordpress
     ports:
-     - '6379:6379'
+     - "6379:6379"
     restart: always
     env_file:
       - .env
@@ -65,7 +65,7 @@ services:
     container_name: web
     build: ./requirements/bonus/web
     ports:
-      - "8888:88"
+      - "7777:77"
     restart: unless-stopped
 
   py:
@@ -75,7 +75,7 @@ services:
 
   adminer:
     container_name: adminer
-    build: ./requirements/bonus/adminer/.
+    build: ./requirements/bonus/adminer/
     image: adminer:42
     depends_on:
       - mariadb
