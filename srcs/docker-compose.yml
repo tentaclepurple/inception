@@ -65,7 +65,7 @@ services:
     container_name: web
     build: ./requirements/bonus/web
     ports:
-      - "8888:88"
+      - "8888:8888"
     restart: unless-stopped
 
   py:
@@ -79,9 +79,12 @@ services:
     image: adminer:42
     depends_on:
       - mariadb
+      - wordpress
     ports:
       - "8080:80"
     restart: always
+    networks:
+      - DockerNet
 
 volumes:
   WP_Volume:
