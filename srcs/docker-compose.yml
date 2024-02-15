@@ -62,10 +62,10 @@ services:
       - DockerNet
 
   web:
-    container_name: web
     build: ./requirements/bonus/web
+    container_name: web
     ports:
-      - "8888:8888"
+      - "7070:7070"
     restart: unless-stopped
 
   py:
