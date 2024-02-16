@@ -68,15 +68,6 @@ services:
       - "7070:70"
     restart: unless-stopped
   
-  website:
-    image: website
-    build:
-      dockerfile: ./requirements/bonus/website/Dockerfile
-    container_name: website
-    ports:
-      - "60:60"
-    restart: always
-
   web2:
     image: httpd:latest
     ports:
