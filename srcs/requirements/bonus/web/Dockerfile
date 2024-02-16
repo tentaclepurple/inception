@@ -19,7 +19,7 @@ FROM debian:bullseye
 
 
 #COPY ./conf/index.html /usr/share/nginx/html
-COPY ./conf/index.html /var/www
+COPY ./conf/index.html /var/www/html
 
 EXPOSE 7070
 
