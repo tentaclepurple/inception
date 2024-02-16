@@ -73,7 +73,7 @@ services:
     networks:
       - DockerNet
     environment:
-      - ADMINER_DEFAULT_SERVER: mariadb
+      - ADMINER_DEFAULT_SERVER: "mariadb"
 
   py:
     container_name: py
