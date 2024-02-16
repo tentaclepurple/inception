@@ -13,15 +13,10 @@
 
 FROM debian:bullseye
 
-# RUN apt update && apt upgrade -y && apt install -y \
-#     nginx \
-#     && rm -rf /var/lib/apt/lists/*
+    RUN apt update && apt upgrade -y && apt install -y \
+    nginx \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN echo "server {" > /etc/nginx/http.d/default.conf && \
-    echo "root    /var/www;" >> /etc/nginx/http.d/default.conf && \
-    echo "location / {" >> /etc/nginx/http.d/default.conf && \
-    echo "    try_files \$uri /index.html;" >> /etc/nginx/http.d/default.conf && \
-    echo "}}" >> /etc/nginx/http.d/default.conf
 
 #COPY ./conf/index.html /usr/share/nginx/html
 COPY ./conf/index.html /var/www
