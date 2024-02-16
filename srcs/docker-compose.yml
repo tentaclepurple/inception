@@ -7,7 +7,7 @@ services:
     build: ./requirements/mariadb/.
     image: mariadb
     restart: always
-    port:
+    ports:
       - "3306:3306"
     volumes:
      - DB_Volume:/var/lib/mysql
