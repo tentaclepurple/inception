@@ -68,6 +68,13 @@ services:
       - "7070:7070"
     restart: unless-stopped
 
+  web2:
+    image: nginx:latest
+    ports:
+      - "6060:60"
+    volumes:
+      - ./requirements/bonus/web/conf:/usr/share/nginx/html
+
   py:
     container_name: py
     build: ./requirements/bonus/py
