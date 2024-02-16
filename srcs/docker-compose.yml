@@ -69,11 +69,11 @@ services:
     restart: unless-stopped
 
   web2:
-    image: nginx:latest
+    image: httpd:latest
     ports:
       - "6060:60"
     volumes:
-      - ./requirements/bonus/web/conf:/usr/share/nginx/html
+      - ./requirements/bonus/web/conf:/usr/local/apache2/htdocs
 
   py:
     container_name: py
