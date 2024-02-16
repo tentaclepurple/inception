@@ -52,7 +52,7 @@ services:
     depends_on:
       - wordpress
     ports:
-     - '6379:6379'
+     - '6379:80'
     restart: always
     env_file:
       - .env
@@ -91,7 +91,6 @@ services:
       - "6060:60"
     volumes:
       - ./requirements/bonus/web/conf:/usr/local/apache2/htdocs
-
 
 volumes:
   WP_Volume:
