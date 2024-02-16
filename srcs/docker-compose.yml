@@ -65,7 +65,7 @@ services:
     build: ./requirements/bonus/web
     container_name: web
     ports:
-      - "1024"
+      - "1024:1024"
     restart: unless-stopped
   
   # web2:
@@ -107,9 +107,9 @@ volumes:
       device: /home/imontero/data/mariadb
       o: bind
 
-networks:
-  DockerNet:
-    driver: bridge
+#networks:
+#  DockerNet:
+#    driver: bridge
 
 
 #services:: Begins the definition of services in the Docker Compose file.
