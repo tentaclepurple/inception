@@ -61,9 +61,23 @@ services:
     networks:
       - DockerNet
 
+  # adminer:
+  #   container_name: adminer
+  #   build: ./requirements/bonus/adminer/
+  #   image: adminer
+  #   depends_on:
+  #     - mariadb
+  #   ports:
+  #     - "8080:80"
+  #   restart: always
+  #   networks:
+  #     - DockerNet
+  #   environment:
+  #      ADMINER_DEFAULT_SERVER: mariadb
+
+    #build: ./requirements/bonus/adminer/
   adminer:
     container_name: adminer
-    build: ./requirements/bonus/adminer/
     image: adminer
     depends_on:
       - mariadb
@@ -73,7 +87,7 @@ services:
     networks:
       - DockerNet
     environment:
-       ADMINER_DEFAULT_SERVER: mariadb
+      ADMINER_DEFAULT_SERVER: mariadb
 
   py:
     container_name: py
