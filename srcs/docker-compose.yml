@@ -65,7 +65,7 @@ services:
     build: ./requirements/bonus/web
     container_name: web
     ports:
-      - "7070:70"
+      - "7070:7070"
     restart: unless-stopped
   
   # web2:
