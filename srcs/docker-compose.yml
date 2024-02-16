@@ -2,64 +2,64 @@ version: '3'
 
 services:
 
-  # mariadb:
-  #   container_name: mariadb
-  #   build: ./requirements/mariadb/.
-  #   image: mariadb
-  #   restart: always
-  #   expose:
-  #     - 3306
-  #   volumes:
-  #    - DB_Volume:/var/lib/mysql
-  #   networks:
-  #     - DockerNet
-  #   env_file:
-  #     - .env
+  mariadb:
+    container_name: mariadb
+    build: ./requirements/mariadb/.
+    image: mariadb
+    restart: always
+    expose:
+      - 3306
+    volumes:
+     - DB_Volume:/var/lib/mysql
+    networks:
+      - DockerNet
+    env_file:
+      - .env
 
-  # wordpress:
-  #   container_name: wordpress
-  #   depends_on:
-  #     - mariadb
-  #   build: ./requirements/wordpress/.
-  #   image: wordpress
-  #   restart: always
-  #   expose:
-  #     - 9000
-  #   volumes:
-  #     - WP_Volume:/var/www/html
-  #   networks:
-  #     - DockerNet
-  #   env_file:
-  #     - .env
+  wordpress:
+    container_name: wordpress
+    depends_on:
+      - mariadb
+    build: ./requirements/wordpress/.
+    image: wordpress
+    restart: always
+    expose:
+      - 9000
+    volumes:
+      - WP_Volume:/var/www/html
+    networks:
+      - DockerNet
+    env_file:
+      - .env
 
-  # nginx:
-  #   container_name: nginx
-  #   depends_on:
-  #     - wordpress
-  #   build: ./requirements/nginx/.
-  #   image: nginx
-  #   restart: always
-  #   ports:
-  #     - "443:443"
-  #   volumes:
-  #     - WP_Volume:/var/www/html
-  #   networks:
-  #     - DockerNet
+  nginx:
+    container_name: nginx
+    depends_on:
+      - wordpress
+    build: ./requirements/nginx/.
+    image: nginx
+    restart: always
+    ports:
+      - "443:443"
+    volumes:
+      - WP_Volume:/var/www/html
+    networks:
+      - DockerNet
 
-  # redis:
-  #   container_name: redis
-  #   build: ./requirements/bonus/redis
-  #   depends_on:
-  #     - wordpress
-  #   ports:
-  #    - '6379:6379'
-  #   restart: always
-  #   env_file:
-  #     - .env
-  #   volumes:
-  #     - WP_Volume:/var/lib/redis
-  #   networks:
-  #     - DockerNet
+  redis:
+    container_name: redis
+    build: ./requirements/bonus/redis
+    depends_on:
+      - wordpress
+    ports:
+     - '6379:6379'
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - WP_Volume:/var/lib/redis
+    networks:
+      - DockerNet
 
   web:
     build: ./requirements/bonus/web
@@ -68,30 +68,30 @@ services:
       - "1024:80"
     restart: unless-stopped
   
-  # web2:
-  #   image: httpd:latest
-  #   ports:
-  #     - "6060:60"
-  #   volumes:
-  #     - ./requirements/bonus/web/conf:/usr/local/apache2/htdocs
+  web2:
+    image: httpd:latest
+    ports:
+      - "6060:60"
+    volumes:
+      - ./requirements/bonus/web/conf:/usr/local/apache2/htdocs
 
-  # py:
-  #   container_name: py
-  #   build: ./requirements/bonus/py
-  #   #restart: unless-stopped
+  py:
+    container_name: py
+    build: ./requirements/bonus/py
+    #restart: unless-stopped
 
-  # adminer:
-  #   container_name: adminer
-  #   build: ./requirements/bonus/adminer/
-  #   image: adminer
-  #   depends_on:
-  #     - mariadb
-  #     - wordpress
-  #   ports:
-  #     - "8080:80"
-  #   restart: always
-  #   networks:
-  #     - DockerNet
+  adminer:
+    container_name: adminer
+    build: ./requirements/bonus/adminer/
+    image: adminer
+    depends_on:
+      - mariadb
+      - wordpress
+    ports:
+      - "8080:80"
+    restart: always
+    networks:
+      - DockerNet
 
 volumes:
   WP_Volume:
@@ -107,9 +107,9 @@ volumes:
       device: /home/imontero/data/mariadb
       o: bind
 
-#networks:
-#  DockerNet:
-#    driver: bridge
+networks:
+  DockerNet:
+    driver: bridge
 
 
 #services:: Begins the definition of services in the Docker Compose file.
