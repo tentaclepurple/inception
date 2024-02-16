@@ -67,7 +67,6 @@ services:
     ports:
       - "7070:70"
     restart: unless-stopped
-    volumes:
   
   website:
     image: website
