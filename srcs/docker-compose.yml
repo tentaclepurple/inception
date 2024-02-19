@@ -61,21 +61,6 @@ services:
     networks:
       - DockerNet
 
-  # adminer:
-  #   container_name: adminer
-  #   build: ./requirements/bonus/adminer/
-  #   image: adminer
-  #   depends_on:
-  #     - mariadb
-  #   ports:
-  #     - "8080:80"
-  #   restart: always
-  #   networks:
-  #     - DockerNet
-  #   environment:
-  #      ADMINER_DEFAULT_SERVER: mariadb
-
-    #build: ./requirements/bonus/adminer/
   adminer:
     container_name: adminer
     image: adminer
@@ -101,13 +86,6 @@ services:
       - "1024:80"
     restart: unless-stopped
   
-  web2:
-    image: httpd:latest
-    ports:
-      - "6060:60"
-    volumes:
-      - ./requirements/bonus/web/conf:/usr/local/apache2/htdocs
-
 volumes:
   WP_Volume:
     driver: local
