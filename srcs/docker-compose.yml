@@ -92,7 +92,7 @@ services:
     ports:
       - "21:21"
     volumes:
-      - wp-volume:/var/www/
+      - WP_Volume:/var/www/html
     env_file:
       - .env
     networks:
