@@ -8,6 +8,8 @@ RUN 	chmod +x /tmp
 
 COPY ./tools/redis.sh /tmp/redis.sh
 
+RUN chmod 777 /tmp/redis.sh
+
 EXPOSE 6379
 
 CMD ["sh", "/tmp/redis.sh"]

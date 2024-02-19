@@ -3,7 +3,7 @@
 if [ ! -f "/etc/redis/redis.conf.bak" ]; then
 
     #We create the .bak to notify the program if it exists, don't go to the loop anymore
-    cp /etc//redis/redis.conf /etc/redis/redis.conf.bak 
+    cp /etc/redis/redis.conf /etc/redis/redis.conf.bak 
 
     sed -i "s|bind 127.0.0.1|#bind 127.0.0.1|g" /etc/redis/redis.conf
     # sed -i "s|# requirepass foobared|requirepass $REDIS_PWD|g" /etc/redis.conf
