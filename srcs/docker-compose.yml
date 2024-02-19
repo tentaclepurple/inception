@@ -86,6 +86,23 @@ services:
       - "1024:80"
     restart: unless-stopped
   
+  ftp:
+    build:
+      context: ../../../
+      dockerfile: requirements/bonus/ftp/dockerfile
+      args:
+        FTP_USR: ${FTP_USR}
+        FTP_PWD: ${FTP_PWD}
+    container_name: ftp
+    ports:
+      - "21:21"
+    volumes:
+      - wp-volume:/var/www/
+    networks:
+     - DockerNet
+    restart: always
+
+  
 volumes:
   WP_Volume:
     driver: local
