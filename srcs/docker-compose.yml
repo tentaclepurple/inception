@@ -87,12 +87,10 @@ services:
     restart: unless-stopped
   
   ftp:
-    build:
-      context: ../../../
-      dockerfile: requirements/bonus/ftp/dockerfile
-      args:
-        FTP_USR: ${FTP_USR}
-        FTP_PWD: ${FTP_PWD}
+    build: ./requirements/bonus/ftp
+    args:
+      FTP_USR: ${FTP_USR}
+      FTP_PWD: ${FTP_PWD}
     container_name: ftp
     ports:
       - "21:21"
