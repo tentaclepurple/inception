@@ -88,14 +88,13 @@ services:
   
   ftp:
     build: ./requirements/bonus/ftp
-    args:
-      FTP_USR: ${FTP_USR}
-      FTP_PWD: ${FTP_PWD}
     container_name: ftp
     ports:
       - "21:21"
     volumes:
       - wp-volume:/var/www/
+    env_file:
+      - .env
     networks:
      - DockerNet
     restart: always
