@@ -100,19 +100,19 @@ services:
   #   restart: always
 
   ftp:
-      image: ftp:${TAG}
-      build: 
-        args:
-          - USER_ID=${USER_ID}
-          - GROUP_ID=${GROUP_ID}
-      container_name: ftp
-      restart: always
-      ports: 
-        - "7042:7042"
-      volumes:
-        - WP_Volume:/var/www/html
-      networks:
-        - DockerNet
+    image: ftp:${TAG}
+    build: 
+      args:
+        - USER_ID=${USER_ID}
+        - GROUP_ID=${GROUP_ID}
+    container_name: ftp
+    restart: always
+    ports: 
+      - "7042:7042"
+    volumes:
+      - WP_Volume:/var/www/html
+    networks:
+      - DockerNet
   
 volumes:
   WP_Volume:
