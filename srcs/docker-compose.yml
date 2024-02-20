@@ -86,23 +86,23 @@ services:
       - "1024:80"
     restart: unless-stopped
   
-    ftp:
-      container_name: ftp
-      build: ./requirements/bonus/ftp/.
-      image: ftp
-      depends_on:
-        - wordpress
-      volumes:
-        - wordpress:/home/sami/ftp/files
-      env_file:
-        - .env
-      ports:
-        - "21:21"
-        - "20:20"
-        - "40000-40005:40000-40005"
-      networks:
-        - inception
-      restart: always
+  ftp:
+    container_name: ftp
+    build: ./requirements/bonus/ftp/.
+    image: ftp
+    depends_on:
+      - wordpress
+    volumes:
+      - wordpress:/home/sami/ftp/files
+    env_file:
+      - .env
+    ports:
+      - "21:21"
+      - "20:20"
+      - "40000-40005:40000-40005"
+    networks:
+      - inception
+    restart: always
 
 volumes:
   WP_Volume:
