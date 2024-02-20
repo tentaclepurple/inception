@@ -101,7 +101,7 @@ services:
       - "20:20"
       - "40000-40005:40000-40005"
     networks:
-      - inception
+      - DockerNet
     restart: always
 
 volumes:
