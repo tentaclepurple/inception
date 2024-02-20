@@ -85,21 +85,6 @@ services:
     ports:
       - "1024:80"
     restart: unless-stopped
-
-  ftp:
-    image: ftp
-    build:
-      args:
-        - USER_ID=${USER_ID}
-        - GROUP_ID=${GROUP_ID}
-    container_name: ftp
-    restart: always
-    ports: 
-      - "7042:7042"
-    volumes:
-      - WP_Volume:/var/www/html
-    networks:
-      - DockerNet
   
 volumes:
   WP_Volume:
