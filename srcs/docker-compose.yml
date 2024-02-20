@@ -93,7 +93,7 @@ services:
     depends_on:
       - wordpress
     volumes:
-      - wordpress:/home/sami/ftp/files
+      - WP_Volume:/home/sami/ftp/files
     env_file:
       - .env
     ports:
@@ -122,51 +122,3 @@ networks:
   DockerNet:
     driver: bridge
 
-
-#services:: Begins the definition of services in the Docker Compose file.
-        #mariadb:: Defines a service named "mariadb".
-            #container_name:: Specifies the name for the MariaDB container as "mariadb".
-            #build:: Specifies the build context for the MariaDB service, indicating that the image should be built from the Dockerfile in the ./requirements/mariadb/ directory.
-            #image:: Specifies the base image to use for the MariaDB service. In this case, it uses the official "mariadb" image from Docker Hub.
-            #restart:: Specifies that the MariaDB container should restart always.
-            #expose:: Exposes port 3306, the default port for MariaDB.
-            #volumes:: Mounts the named volume "DB_Volume" to the /var/lib/mysql directory inside the container, providing persistent storage for MariaDB data.
-            #networks:: Connects the "DockerNet" network to the MariaDB service.
-            #env_file:: Specifies the environment file ".env" to load environment variables into the MariaDB service.
-        #wordpress:: Defines a service named "wordpress".
-            #container_name:: Specifies the name for the WordPress container as "wordpress".
-            #depends_on:: Specifies that the WordPress service depends on the "mariadb" service, ensuring that "mariadb" is started before "wordpress".
-            #build:: Specifies the build context for the WordPress service, indicating that the image should be built from the Dockerfile in the ./requirements/wordpress/ directory.
-            #image:: Specifies the base image to use for the WordPress service. In this case, it uses the official "wordpress" image from Docker Hub.
-            #restart:: Specifies that the WordPress container should restart always.
-            #expose:: Exposes port 9000, which is the port used for communication with the PHP-FPM service.
-            #volumes:: Mounts the named volume "WP_Volume" to the /var/www/html directory inside the container, providing persistent storage for WordPress data.
-            #networks:: Connects the "DockerNet" network to the WordPress service.
-            #env_file:: Specifies the environment file ".env" to load environment variables into the WordPress service.
-        #nginx:: Defines a service named "nginx".
-            #container_name:: Specifies the name for the Nginx container as "nginx".
-            #depends_on:: Specifies that the Nginx service depends on the "wordpress" service, ensuring that "wordpress" is started before "nginx".
-            #build:: Specifies the build context for the Nginx service, indicating that the image should be built from the Dockerfile in the ./requirements/nginx/ directory.
-            #image:: Specifies the base image to use for the Nginx service. In this case, it uses the official "nginx" image from Docker Hub.
-            #restart:: Specifies that the Nginx container should restart always.
-            #ports:: Maps port 443 on the host to port 443 on the Nginx container, allowing external access to the HTTPS service.
-            #volumes:: Mounts the named volume "WP_Volume" to the /var/www/html directory inside the container, providing access to WordPress data.
-            #networks:: Connects the "DockerNet" network to the Nginx service.
-
-#volumes:: Defines named volumes and their configurations.
-        #WP_Volume:: Defines the "WP_Volume" named volume.
-            #driver:: Specifies the volume driver as "local".
-            #driver_opts:: Provides options for the volume driver.
-                #type: volume:: Specifies the type of the volume.
-                #device: /home/imontero/data/wordpress:: Binds the volume to the /home/imontero/data/wordpress directory on the host.
-                #o: bind:: Indicates that the volume should be mounted as a bind mount.
-        #DB_Volume:: Defines the "DB_Volume" named volume with similar configurations as "WP_Volume".
-            #driver:: Specifies the volume driver as "local".
-            #driver_opts:: Provides options for the volume driver.
-                #type: volume:: Specifies the type of the volume.
-                #device: /home/imontero/data/mariadb:: Binds the volume to the /home/imontero/data/mariadb directory on the host.
-                #o: bind:: Indicates that the volume should be mounted as a bind mount.
-
-#networks:: Defines the networks section.
-        #DockerNet:: Defines a bridge network named "DockerNet" for communication between containers.
-            #driver: bridge:: Specifies the network driver as "bridge". This means the containers will be connected in a bridge network, allowing them to communicate with each other.
