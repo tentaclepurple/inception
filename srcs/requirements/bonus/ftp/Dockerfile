@@ -1,28 +1,40 @@
-FROM alpine:3.18.6
+FROM    alpine:3.15
 
-ARG FTP_USR \
-    FTP_PWD
+# labels
+LABEL   org.opencontainers.image.authors=twagner
+LABEL   org.opencontainers.image.source=https://github.com/twagger/inception
+LABEL   org.opencontainers.image.version=0.1.0
 
-RUN apk update && apk upgrade && \
-    apk add --no-cache vsftpd
+# args for proper user rights management
+ARG     USER_ID=${USER_ID}
+ARG     GROUP_ID=${GROUP_ID}
 
-RUN adduser -h /var/www -s /bin/false -D ${FTP_USR} && \
-    echo "${FTP_USR}:${FTP_PWD}" | /usr/sbin/chpasswd && \
-    adduser ${FTP_USR} root
+# workdir
+WORKDIR /var/www/wordpress
 
+# add specific user and group with current host userid and groupid to run the process
+RUN     addgroup -S -g ${GROUP_ID} vsftp \
+ &&     adduser -S -G vsftp -u ${USER_ID} vsftp \
+\
+# install vsftp and shadow (login and pass utilities) 
+ &&     apk update && apk upgrade && apk add --update --no-cache \
+            vsftpd \
+            shadow \
+ &&     rm -f /var/cache/apk/* \
+\
+# create and own log file
+ &&     touch /var/log/vsftpd.log \
+ &&     chown vsftp:vsftp /var/log/vsftpd.log /var/www/wordpress
 
+# copy configuration file
+COPY    conf/vsftpd.conf /etc/vsftpd/
 
-RUN sed -i "s|#chroot_local_user=YES|chroot_local_user=YES|g"  /etc/vsftpd/vsftpd.conf && \
-    sed -i "s|#local_enable=YES|local_enable=YES|g"  /etc/vsftpd/vsftpd.conf && \
-    sed -i "s|#write_enable=YES|write_enable=YES|g"  /etc/vsftpd/vsftpd.conf && \
-    sed -i "s|#local_umask=022|local_umask=007|g"  /etc/vsftpd/vsftpd.conf
+# launching user must own the configuration file
+RUN     chown -R vsftp:vsftp /etc/vsftpd
 
-RUN echo "allow_writeable_chroot=YES" >> /etc/vsftpd/vsftpd.conf &&\
-    echo 'seccomp_sandbox=NO' >> /etc/vsftpd/vsftpd.conf && \
-    echo 'pasv_enable=YES' >> /etc/vsftpd/vsftpd.conf
+EXPOSE  7042
 
-WORKDIR /var/www
+# launch command as non root
+USER    vsftp
 
-EXPOSE 21
-
-CMD [ "/usr/sbin/vsftpd", "/etc/vsftpd/vsftpd.conf" ]
+CMD     ["vsftpd", "/etc/vsftpd/vsftpd.conf"]
