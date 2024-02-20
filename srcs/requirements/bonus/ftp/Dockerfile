@@ -6,9 +6,14 @@ ARG FTP_USR \
 RUN apk update && apk upgrade && \
     apk add --no-cache vsftpd
 
-RUN adduser -h /var/www -s /bin/false -D ${FTP_USR} && \
+# RUN adduser -h /var/www -s /bin/false -D ${FTP_USR} && \
+#     echo "${FTP_USR}:${FTP_PWD}" | /usr/sbin/chpasswd && \
+#     adduser ${FTP_USR} root
+
+RUN adduser -D -h /var/www -s /sbin/nologin ${FTP_USR} && \
     echo "${FTP_USR}:${FTP_PWD}" | /usr/sbin/chpasswd && \
     adduser ${FTP_USR} root
+
 
 RUN sed -i "s|#chroot_local_user=YES|chroot_local_user=YES|g"  /etc/vsftpd/vsftpd.conf && \
     sed -i "s|#local_enable=YES|local_enable=YES|g"  /etc/vsftpd/vsftpd.conf && \
