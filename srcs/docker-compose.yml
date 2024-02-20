@@ -85,19 +85,6 @@ services:
     ports:
       - "1024:80"
     restart: unless-stopped
-  
-  # ftp:
-  #   build: ./requirements/bonus/ftp
-  #   container_name: ftp
-  #   ports:
-  #     - "21:21"
-  #   volumes:
-  #     - WP_Volume:/var/www/html
-  #   env_file:
-  #     - .env
-  #   networks:
-  #    - DockerNet
-  #   restart: always
 
   ftp:
     image: ftp
