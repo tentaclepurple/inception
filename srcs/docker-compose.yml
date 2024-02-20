@@ -100,7 +100,7 @@ services:
   #   restart: always
 
   ftp:
-    image: ftp:${TAG}
+    image: ftp
     build: 
       args:
         - USER_ID=${USER_ID}
