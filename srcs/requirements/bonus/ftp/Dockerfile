@@ -10,8 +10,9 @@ RUN apk update && apk upgrade && \
 #     echo "${FTP_USR}:${FTP_PWD}" | /usr/sbin/chpasswd && \
 #     adduser ${FTP_USR} root
 
-RUN adduser -D -h /var/www -s /sbin/nologin ${FTP_USR} && \
-    echo "${FTP_USR}:${FTP_PWD}" | /usr/sbin/chpasswd && \
+RUN addgroup -S ${FTP_USR} && \
+    adduser -S -D -H -h /var/www -s /sbin/nologin -G ${FTP_USR} ${FTP_USR} && \
+    echo "${FTP_USR}:${FTP_PWD}" | chpasswd && \
     adduser ${FTP_USR} root
 
 
