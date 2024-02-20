@@ -93,7 +93,7 @@ services:
     depends_on:
       - wordpress
     volumes:
-      - WP_Volume:/home/sami/ftp/files
+      - WP_Volume:/ftp/files
     env_file:
       - .env
     ports:
