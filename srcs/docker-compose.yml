@@ -63,7 +63,7 @@ services:
 
   adminer:
     container_name: adminer
-    #image: adminer:latest
+    image: adminer
     depends_on:
       - mariadb
     ports:
